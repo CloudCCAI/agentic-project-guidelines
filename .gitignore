@@ -1,0 +1,5 @@
+# macOS metadata
+.DS_Store
+
+# Agentic-project runtime state (instance-specific, not part of the published skill)
+.claw/
