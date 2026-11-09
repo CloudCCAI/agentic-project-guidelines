@@ -1,7 +1,7 @@
 ---
 name: agentic-project-guidelines
 description: Project management and delivery governance for AI coding agents. Use for agentic software projects that need persistent project memory, task boards, feature specs, ADRs, issue tracking, test evidence, handoff notes, or greenfield and brownfield adoption workflows.
-skill_version: 3.10.0
+skill_version: 3.11.0
 ---
 
 # Agentic Project Guidelines
@@ -10,7 +10,7 @@ Use this skill to manage AI-assisted software projects through durable project s
 
 ## Skill Version
 
-Canonical skill version: `3.10.0`
+Canonical skill version: `3.11.0`
 
 Use the `skill_version` field in this file's front matter as the source of truth for the installed skill version. If `README.md`, `CHANGELOG.md`, or other references drift, this field wins.
 
@@ -53,7 +53,9 @@ Utility scripts are available under `scripts/`:
 
 ## Project-Level Skill Declaration
 
-Every project that adopts this skill must maintain a short managed declaration block in the project-root `README.md` and `AGENTS.md`.
+Every project that adopts this skill must have a root `AGENTS.md`. Read and follow it before project work. If the agent does not load it automatically, open it explicitly. The project-root `README.md` and `AGENTS.md` must both carry the managed skill declaration.
+
+If the root has `CLAUDE.md` (including spellings such as `Claude.md`) and lacks `AGENTS.md`, create `AGENTS.md` before continuing. Add a relative Markdown link that tells agents to read the existing rules, and keep those rules in the original file. When both files exist, the existing root `CLAUDE.md` should import `AGENTS.md` using `@AGENTS.md` so Claude Code loads the shared entry point. Use a plain Markdown link from `AGENTS.md` to the legacy file to avoid a recursive import.
 
 That declaration must state all of the following:
 
@@ -61,7 +63,7 @@ That declaration must state all of the following:
 - every AI agent must automatically use this skill before project work
 - if the skill is not installed in the current environment, install it first from `https://github.com/CloudCCAI/agentic-project-guidelines`
 
-Use `scripts/ensure-agent-guidance.sh <project-root>` to create or refresh those declarations.
+Use `scripts/ensure-agent-guidance.sh <project-root>` to create or refresh these files. Keep existing project guidance outside the managed declaration block.
 
 For `Greenfield Mode`, create or update `README.md` and `AGENTS.md` during bootstrap.
 
@@ -157,6 +159,7 @@ If files conflict, repair the summary file and preserve the source-of-truth file
 
 ### 1. Session start
 
+- Read the root `AGENTS.md` and any existing project instructions it indexes. Create or repair the root entry point as described above if it is missing.
 - Resolve the canonical state directory.
 - Read `current-status.md` first.
 - Read `task-board.md` for any implementation, handoff, or prioritization work.

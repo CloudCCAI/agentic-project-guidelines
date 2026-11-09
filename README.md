@@ -20,7 +20,7 @@ It covers three project-management layers:
 
 ## 版本标识 | Version Marker
 
-当前 skill 版本：`3.10.0`
+当前 skill 版本：`3.11.0`
 
 唯一权威版本标识位于 [SKILL.md](SKILL.md) front matter 中的 `skill_version` 字段。智能体需要判断当前安装的是哪个版本时，应优先读取这个字段，而不是以 README 或 CHANGELOG 为准。
 
@@ -54,7 +54,7 @@ It covers three project-management layers:
 
 ## 项目级技能声明 | Project-Level Skill Declaration
 
-凡是采用此技能的项目，都必须在项目根目录的 `README.md` 和 `AGENTS.md` 中保留一个受控声明块，明确说明：
+采用此技能的项目必须有根目录 `AGENTS.md`。所有智能体在开始项目工作前都要读取并遵守它。根目录的 `README.md` 和 `AGENTS.md` 必须保留受控声明块，明确说明：
 
 - 当前项目遵循 `agentic-project-guidelines`
 - 所有 AI 智能体必须自动使用此技能
@@ -65,6 +65,8 @@ It covers three project-management layers:
 ```bash
 bash /path/to/this-skill/scripts/ensure-agent-guidance.sh /path/to/your-project
 ```
+
+根目录只有 `CLAUDE.md`（也识别 `Claude.md` 等大小写写法）时，脚本会补建 `AGENTS.md`，用相对链接指引智能体读取原有规则。已有的普通 `CLAUDE.md` 会补上 `@AGENTS.md` 导入，以便 Claude Code 同时加载共享规则。升级已有项目时，运行上面的声明写入脚本即可。
 
 ## 快速开始
 
@@ -329,11 +331,11 @@ This project follows the `agentic-project-guidelines` skill.
 
 - All AI agents must automatically use this skill before project analysis, planning, implementation, testing, or maintenance.
 - If the current agent does not have this skill installed, install it first from GitHub: https://github.com/CloudCCAI/agentic-project-guidelines
-- When the environment supports `AGENTS.md`, treat both this README section and `AGENTS.md` as mandatory project instructions.
+- Read and follow the project-root `AGENTS.md` before working on the project.
 
 本项目遵循 `agentic-project-guidelines` 技能规范。
 
 - 所有 AI 智能体在进行项目分析、规划、编码、测试和维护前，必须自动使用此技能。
 - 如果当前智能体尚未安装此技能，必须先从 GitHub 安装：https://github.com/CloudCCAI/agentic-project-guidelines
-- 如果当前环境支持 `AGENTS.md`，应将 README 中的本节和 `AGENTS.md` 同时视为必须遵守的项目级指令。
+- 开始项目工作前，必须读取并遵守根目录的 `AGENTS.md`。
 <!-- agentic-project-guidelines:end -->

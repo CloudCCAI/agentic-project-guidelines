@@ -7,7 +7,7 @@ owner_role: shared
 task_ids: TASK-001
 related_decisions: ADR-001
 related_issues: none
-updated_at: 2026-04-30T01:31:01Z
+updated_at: 2026-11-09T05:27:35Z
 updated_by: codex
 ---
 
@@ -87,3 +87,11 @@ updated_by: codex
 
 - 下一位接手者如需增强声明块策略，优先保持 marker 和校验规则兼容。
 - 如需支持更多平台安装方式，可在不破坏 GitHub 来源要求的前提下补充平台特定说明。
+
+
+## 根目录 AGENTS.md 与 Claude Code 接入（3.11.0）
+
+- 新项目、老项目和后续会话都必须使用根目录 `AGENTS.md`。即使当前工具不会自动加载，智能体也必须主动读取。
+- 只有旧版 `CLAUDE.md` 时，声明写入器创建 `AGENTS.md`，用相对 Markdown 链接索引原规则。旧文件名有大小写变体时保留实际拼写，原规则仍留在原文件。
+- 两个文件并存时，现有普通 `CLAUDE.md` 通过 `@AGENTS.md` 加载共享规则。已存在导入时保留原导入。反向索引使用 Markdown 链接，避免递归导入。
+- 验收覆盖空项目、只有旧规则的项目、已有两个规则文件的项目，以及重复执行。初始化后的状态校验必须通过，移除 `AGENTS.md` 后必须失败。
