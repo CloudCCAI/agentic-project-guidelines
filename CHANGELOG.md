@@ -1,11 +1,5 @@
 # Changelog
 
-## 3.11.0 - 2026-11-09
-
-- Require every adopting project to maintain a root `AGENTS.md` and every agent to read it before project work.
-- When only a legacy root `CLAUDE.md` exists, create `AGENTS.md` with a link to its rules. Add an `@AGENTS.md` import to the existing Claude instructions so Claude Code also loads the shared entry point.
-- Refresh managed declarations in place so rerunning setup keeps the files stable.
-
 ## 3.10.0 - 2026-06-11
 
 - Renamed the skill to `agentic-project-guidelines`.

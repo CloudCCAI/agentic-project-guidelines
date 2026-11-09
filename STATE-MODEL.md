@@ -1,6 +1,6 @@
 ---
 title: Agentic Project State Model Reference
-version: 3.11.0
+version: 3.10.0
 ---
 
 # Agentic Project State Model Reference
@@ -31,7 +31,7 @@ That block must say:
 - every AI agent must automatically use the skill
 - if the skill is missing locally, install it from `https://github.com/CloudCCAI/agentic-project-guidelines`
 
-Follow the [mandatory AGENTS.md and legacy CLAUDE.md migration rules](SKILL.md#project-level-skill-declaration). The recommended writer is `scripts/ensure-agent-guidance.sh`.
+The recommended writer is `scripts/ensure-agent-guidance.sh`.
 
 ## Canonical File Semantics
 
